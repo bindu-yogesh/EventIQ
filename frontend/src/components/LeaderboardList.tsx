@@ -14,27 +14,57 @@ function LeaderboardList() {
   }, []);
 
   return (
-    <div style={{ marginTop: "40px" }}>
-      <h2>🏆 Leaderboard</h2>
+    <div style={{ marginTop: "50px" }}>
+      <h2
+        style={{
+          fontSize: "42px",
+          marginBottom: "25px",
+        }}
+      >
+        🏆 Leaderboard
+      </h2>
 
       {leaders.map((user, index) => (
         <div
           key={index}
           style={{
             background: "white",
-            padding: "15px",
-            marginTop: "10px",
-            borderRadius: "10px",
-            border: "1px solid #ddd",
+            padding: "20px",
+            margin: "15px auto",
+            borderRadius: "15px",
+            boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
+            maxWidth: "900px",
+            transition: "0.3s",
+            cursor: "pointer",
           }}
         >
-          <h3>
+          <h3
+            style={{
+              fontSize: "32px",
+              marginBottom: "10px",
+            }}
+          >
             #{user.rank} {user.name}
           </h3>
 
-          <p>Department: {user.department}</p>
+          <p
+            style={{
+              fontSize: "18px",
+              marginBottom: "8px",
+            }}
+          >
+            Department: {user.department}
+          </p>
 
-          <p>Points: {user.attendancePoints}</p>
+          <p
+            style={{
+              fontSize: "18px",
+              fontWeight: "bold",
+              color: "#2563eb",
+            }}
+          >
+            Points: {user.attendancePoints}
+          </p>
         </div>
       ))}
     </div>

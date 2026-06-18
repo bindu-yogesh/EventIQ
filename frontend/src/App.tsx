@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 import Navbar from "./components/Navbar";
 import EventList from "./components/EventList";
 import LeaderboardList from "./components/LeaderboardList";
@@ -29,70 +30,142 @@ function App() {
           minHeight: "100vh",
           background: "#f5f7fb",
           padding: "30px",
-          fontFamily: "Arial",
+          fontFamily: "Arial, sans-serif",
         }}
       >
-        <h1>🎓 EventIQ Dashboard</h1>
+        {/* Hero Section */}
+        <div
+          style={{
+            background: "linear-gradient(135deg, #2563eb, #1e40af)",
+            color: "white",
+            padding: "40px",
+            borderRadius: "16px",
+            marginBottom: "30px",
+            boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+          }}
+        >
+          <h1
+            style={{
+              fontSize: "36px",
+              marginBottom: "10px",
+            }}
+          >
+            Welcome to EventIQ 🚀
+          </h1>
 
-        <p>Smart Campus Event Management System</p>
+          <p
+            style={{
+              fontSize: "18px",
+              opacity: 0.9,
+            }}
+          >
+            Smart Campus Event Management System powered by AI
+          </p>
+        </div>
 
+        {/* Dashboard Heading */}
+        <h1 style={{ marginBottom: "10px" }}>
+          🎓 EventIQ Dashboard
+        </h1>
+
+        <p style={{ marginBottom: "25px" }}>
+          Manage events, attendance, analytics and recommendations.
+        </p>
+
+        {/* Stats Cards */}
         {stats && (
           <div
             style={{
               display: "flex",
               gap: "20px",
-              marginTop: "30px",
               flexWrap: "wrap",
+              marginBottom: "40px",
             }}
           >
             <div
               style={{
                 background: "white",
-                padding: "20px",
-                borderRadius: "12px",
-                width: "220px",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                padding: "25px",
+                borderRadius: "15px",
+                width: "240px",
+                boxShadow: "0 4px 15px rgba(0,0,0,0.12)",
               }}
             >
-              <h2>{stats.totalEvents}</h2>
+              <h2
+                style={{
+                  fontSize: "36px",
+                  marginBottom: "10px",
+                }}
+              >
+                {stats.totalEvents}
+              </h2>
+
               <p>Total Events</p>
             </div>
 
             <div
               style={{
                 background: "white",
-                padding: "20px",
-                borderRadius: "12px",
-                width: "220px",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                padding: "25px",
+                borderRadius: "15px",
+                width: "240px",
+                boxShadow: "0 4px 15px rgba(0,0,0,0.12)",
               }}
             >
-              <h2>{stats.totalUsers}</h2>
+              <h2
+                style={{
+                  fontSize: "36px",
+                  marginBottom: "10px",
+                }}
+              >
+                {stats.totalUsers}
+              </h2>
+
               <p>Total Users</p>
             </div>
 
             <div
               style={{
                 background: "white",
-                padding: "20px",
-                borderRadius: "12px",
-                width: "220px",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                padding: "25px",
+                borderRadius: "15px",
+                width: "240px",
+                boxShadow: "0 4px 15px rgba(0,0,0,0.12)",
               }}
             >
-              <h2>{stats.totalAttendance}</h2>
+              <h2
+                style={{
+                  fontSize: "36px",
+                  marginBottom: "10px",
+                }}
+              >
+                {stats.totalAttendance}
+              </h2>
+
               <p>Total Attendance</p>
             </div>
           </div>
         )}
 
-        <div style={{ marginTop: "40px" }}>
+        {/* Events */}
+        <div style={{ marginBottom: "40px" }}>
           <EventList />
         </div>
 
-        <AIRecommendations />
-        <EventForm />
-        <LeaderboardList />
+        {/* AI Recommendations */}
+        <div style={{ marginBottom: "40px" }}>
+          <AIRecommendations />
+        </div>
+
+        {/* Event Form */}
+        <div style={{ marginBottom: "40px" }}>
+          <EventForm />
+        </div>
+
+        {/* Leaderboard */}
+        <div style={{ marginBottom: "40px" }}>
+          <LeaderboardList />
+        </div>
       </div>
     </>
   );

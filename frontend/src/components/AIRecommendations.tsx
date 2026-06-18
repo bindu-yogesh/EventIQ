@@ -14,33 +14,78 @@ function AIRecommendations() {
   }, []);
 
   return (
-    <div style={{ marginTop: "40px" }}>
-      <h2>🤖 AI Recommendations</h2>
+    <div style={{ marginTop: "50px" }}>
+      <h2
+        style={{
+          fontSize: "42px",
+          marginBottom: "10px",
+        }}
+      >
+        🤖 AI Recommendations
+      </h2>
 
-      <p>Total Recommendations: {recommendations.length}</p>
+      <p
+        style={{
+          fontSize: "20px",
+          marginBottom: "25px",
+          color: "#555",
+        }}
+      >
+        Total Recommendations: {recommendations.length}
+      </p>
 
-      {recommendations.map((item, index) => {
-        return (
-          <div
-            key={index}
+      {recommendations.map((item, index) => (
+        <div
+          key={index}
+          style={{
+            background: "white",
+            padding: "20px",
+            margin: "15px auto",
+            borderRadius: "15px",
+            boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
+            maxWidth: "900px",
+            transition: "0.3s",
+            cursor: "pointer",
+          }}
+        >
+          <h3
             style={{
-              background: "white",
-              padding: "15px",
-              marginTop: "10px",
-              borderRadius: "10px",
-              border: "1px solid #ddd",
+              fontSize: "30px",
+              marginBottom: "12px",
             }}
           >
-            <h3>{item.title}</h3>
+            {item.title}
+          </h3>
 
-            <p>Category: {item.category}</p>
+          <p
+            style={{
+              fontSize: "18px",
+              marginBottom: "8px",
+            }}
+          >
+            <strong>Category:</strong> {item.category}
+          </p>
 
-            <p>Date: {item.date}</p>
+          <p
+            style={{
+              fontSize: "18px",
+              marginBottom: "8px",
+            }}
+          >
+            <strong>Date:</strong> {item.date}
+          </p>
 
-            <p>Venue: {item.venue}</p>
-          </div>
-        );
-      })}
+          <p
+            style={{
+              fontSize: "18px",
+              color: "#2563eb",
+              fontWeight: "bold",
+            }}
+          >
+            <strong>Venue:</strong> {item.venue}
+          </p>
+        </div>
+      ))}
     </div>
   );
 }

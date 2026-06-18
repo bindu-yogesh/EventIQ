@@ -10,11 +10,15 @@ export const createEvent = async (
 
     res.status(201).json({
       success: true,
+      message: "Event created successfully",
       event,
     });
   } catch (error) {
+    console.error(error);
+
     res.status(500).json({
       success: false,
+      message: "Failed to create event",
       error,
     });
   }
@@ -25,30 +29,23 @@ export const getEvents = async (
   res: Response
 ): Promise<void> => {
   try {
+    const events = await Event.find();
+
     res.status(200).json({
       success: true,
-      events: [
-        {
-          id: 1,
-          title: "React Workshop",
-          date: "2026-06-20",
-          attendees: 120,
-        },
-        {
-          id: 2,
-          title: "AI Hackathon",
-          date: "2026-06-25",
-          attendees: 200,
-        },
-      ],
+      events,
     });
   } catch (error) {
+    console.error(error);
+
     res.status(500).json({
       success: false,
+      message: "Failed to fetch events",
       error,
     });
   }
 };
+
 export const registerForEvent = async (
   req: Request,
   res: Response
@@ -60,6 +57,7 @@ export const registerForEvent = async (
 
     if (!event) {
       res.status(404).json({
+        success: false,
         message: "Event not found",
       });
       return;
@@ -72,10 +70,14 @@ export const registerForEvent = async (
     res.status(200).json({
       success: true,
       message: "Registered successfully",
+      event,
     });
   } catch (error) {
+    console.error(error);
+
     res.status(500).json({
       success: false,
+      message: "Registration failed",
       error,
     });
   }

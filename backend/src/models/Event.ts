@@ -3,21 +3,16 @@ import mongoose, { Schema, Document } from "mongoose";
 export interface IEvent extends Document {
   title: string;
   description: string;
-
   category: string;
-
   venue: string;
-
   date: Date;
 
-  organizer: mongoose.Types.ObjectId;
+  organizer?: mongoose.Types.ObjectId;
 
   capacity: number;
 
   registeredUsers: mongoose.Types.ObjectId[];
-
   waitlistUsers: mongoose.Types.ObjectId[];
-
   attendees: mongoose.Types.ObjectId[];
 
   tags: string[];
@@ -25,19 +20,14 @@ export interface IEvent extends Document {
   department: string;
 
   qrEnabled: boolean;
-
   geofenceEnabled: boolean;
 
   latitude?: number;
-
   longitude?: number;
-
   radius?: number;
 
   successScore: number;
-
   feedbackCount: number;
-
   averageRating: number;
 
   createdAt: Date;
@@ -74,7 +64,7 @@ const EventSchema = new Schema<IEvent>(
     organizer: {
       type: Schema.Types.ObjectId,
       ref: "User",
-      required: true,
+      required: false,
     },
 
     capacity: {
@@ -124,9 +114,13 @@ const EventSchema = new Schema<IEvent>(
       default: false,
     },
 
-    latitude: Number,
+    latitude: {
+      type: Number,
+    },
 
-    longitude: Number,
+    longitude: {
+      type: Number,
+    },
 
     radius: {
       type: Number,
@@ -153,4 +147,7 @@ const EventSchema = new Schema<IEvent>(
   }
 );
 
-export default mongoose.model<IEvent>("Event", EventSchema);
+export default mongoose.model<IEvent>(
+  "Event",
+  EventSchema
+);
